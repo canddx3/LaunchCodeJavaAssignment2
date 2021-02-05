@@ -1,4 +1,4 @@
-package org.launchcode.techjobs_oo;
+package org.launchcode.techjobs_oo.Main;
 
 public class Main {
 

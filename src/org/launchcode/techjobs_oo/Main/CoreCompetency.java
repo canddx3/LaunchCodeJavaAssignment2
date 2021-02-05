@@ -1,4 +1,4 @@
-package org.launchcode.techjobs_oo;
+package org.launchcode.techjobs_oo.Main;
 
 import java.util.Objects;
 
@@ -39,4 +39,17 @@ public class CoreCompetency {
 
     // TODO: Use the "Generate" tool to add a getter and setter for the 'value' field but
     //  ONLY a getter for the 'id' field.
+
+
+    public int getId () {
+        return id;
+    }
+
+    public String getValue () {
+        return value;
+    }
+
+    public void setValue ( String value ) {
+        this.value = value;
+    }
 }
