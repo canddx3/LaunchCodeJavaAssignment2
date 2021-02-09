@@ -22,13 +22,6 @@ public class Job {
         nextId++;
     }
 
-    public Job ( String name, Employer employer, PositionType positionType ) {
-        this();
-        this.name = name;
-        this.employer = employer;
-        this.positionType = positionType;
-    }
-
     public Job ( String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency ) {
         this();
         this.name = name;
@@ -43,11 +36,23 @@ public class Job {
 
     @Override
     public String toString () {
-//        String newName = name.isBlank() ? "Data Not Available" : name;
-//        String newEmp = employer.toString().isBlank() ? "Data Not Available" : employer.toString();
-//        String newLoc = location.toString().isBlank() ? "Data Not Available" : location.toString();
-//        String newPosT = positionType.toString().isBlank() ? "Data Not Available" : positionType.toString();
-//        String newCore = coreCompetency.toString().isBlank() ? "Data Not Available" : coreCompetency.toString();
+        if (id >= 1 && name.isEmpty()
+                && employer.toString().isEmpty()
+                && location.toString().isEmpty()
+                && positionType.toString().isEmpty()
+                && coreCompetency.toString().isEmpty()) {
+            return "OPPS";
+        }
+
+        name = name.isBlank() ? "Data Not Available": name;
+        String newEmp = employer.toString().isBlank()? "Data Not Available": employer.toString();
+        employer.setValue(newEmp);
+        String newLoc = location.toString().isBlank() ? "Data Not Available": location.toString();
+        location.setValue(newLoc);
+        String newType = positionType.toString().isBlank() ? "Data Not Available": positionType.toString();
+        positionType.setValue(newType);
+        String newCore= coreCompetency.toString().isBlank() ? "Data Not Available": coreCompetency.toString();
+        coreCompetency.setValue(newCore);
 
         return "\n" + "Id: " + id +
                         "\n" + "Name: " + name +

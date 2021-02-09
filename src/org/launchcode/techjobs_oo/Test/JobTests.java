@@ -20,7 +20,7 @@ public class JobTests {
         jobFullCon = new Job("Product Tester", new Employer("Acme"), new Location("Desert"), new PositionType("QC"), new CoreCompetency("Persistence"));
         jobEqual = new Job("Product Tester", new Employer("Acme"), new Location("Desert"), new PositionType("QC"), new CoreCompetency("Persistence"));
         jobNotEqual = new Job("Tester", new Employer("Data Not Available"), new Location("Mars"), new PositionType("Data Not Available"), new CoreCompetency("Assertive"));
-        jobIdOnly = new Job();
+        jobIdOnly = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
     }
 
     @Test
@@ -75,13 +75,7 @@ public class JobTests {
 
     @Test
     public void onlyId() {
-        assertEquals("\nId: 36" +
-                        "\nName: null" +
-                        "\nEmployer: null" +
-                        "\nLocation: null" +
-                        "\nPosition Type: null" +
-                        "\nCore Competency: null" +
-                        "\n",
+        assertEquals("OPPS",
                 jobIdOnly.toString());
     }
 }
