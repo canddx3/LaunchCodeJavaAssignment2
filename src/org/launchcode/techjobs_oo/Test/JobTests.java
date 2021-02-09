@@ -1,27 +1,26 @@
 package org.launchcode.techjobs_oo.Test;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.Main.*;
-
 import static org.junit.Assert.*;
 
 public class JobTests {
 
-    Job jobName;
-    Job jobEmp;
-    Job jobTest;
-    Job jobObj;
-    Job jobObjs;
+    Job jobEmptyCon;
+    Job jobEmptyConst;
+    Job jobFullCon;
+    Job jobEqual;
+    Job jobNotEqual;
+    Job jobIdOnly;
 
     @Before
     public void createJobTestObject () {
-        jobName = new Job();
-        jobEmp = new Job();
-        jobTest = new Job("Product Tester", new Employer("Acme"), new Location("Desert"), new PositionType("QC"), new CoreCompetency("persistence"));
-        jobObj = new Job("Product Tester", new Employer("Acme"), new Location("Desert"), new PositionType("QC"), new CoreCompetency("persistence"));
-        jobObjs = new Job("Product Tester", new Employer("Acme"), new Location("Desert"), new PositionType("QC"), new CoreCompetency("persistence"));
-
+        jobEmptyCon = new Job();
+        jobEmptyConst = new Job();
+        jobFullCon = new Job("Product Tester", new Employer("Acme"), new Location("Desert"), new PositionType("QC"), new CoreCompetency("Persistence"));
+        jobEqual = new Job("Product Tester", new Employer("Acme"), new Location("Desert"), new PositionType("QC"), new CoreCompetency("Persistence"));
+        jobNotEqual = new Job("Tester", new Employer("Data Not Available"), new Location("Mars"), new PositionType("Data Not Available"), new CoreCompetency("Assertive"));
+        jobIdOnly = new Job();
     }
 
     @Test
@@ -31,23 +30,60 @@ public class JobTests {
 
     @Test
     public void testSettingJobId () {
-        assertTrue(jobName.getId() < jobEmp.getId());
+        assertTrue(jobEmptyCon.getId() < jobEmptyConst.getId());
     }
 
     @Test
     public void testJCSAF () {
-        assertTrue(jobTest instanceof Job);
+        assertTrue(jobFullCon instanceof Job);
     }
 
     @Test
     public void testJFE () {
-        assertNotEquals(jobObj.getId(), jobObjs.getId());
+        assertFalse(jobEqual.equals(jobNotEqual));
     }
 
-//    @Test
-//    public void testBlankLine() {
-//        assertTrue(jobObj.toString() == "     ");
-//    }
+    @Test
+    public void testBlankLine() {
+        char beforeChar = jobEqual.toString().charAt(0);
+        char afterChar = jobEqual.toString().charAt(jobEqual.toString().length() -1);
+        assertTrue(beforeChar == afterChar);
+    }
+
+    @Test
+    public void stringLabel() {
+        assertEquals("\nId: 10" +
+                "\nName: Product Tester" +
+                "\nEmployer: Acme" +
+                "\nLocation: Desert" +
+                "\nPosition Type: QC" +
+                "\nCore Competency: Persistence\n",
+                jobEqual.toString());
+    }
+
+    @Test
+    public void isEmpty() {
+        assertEquals("\nId: 47" +
+                        "\nName: Tester" +
+                        "\nEmployer: Data Not Available" +
+                        "\nLocation: Mars" +
+                        "\nPosition Type: Data Not Available" +
+                        "\nCore Competency: Assertive\n",
+                jobNotEqual.toString());
+    }
+
+
+    @Test
+    public void onlyId() {
+        assertEquals("\nId: 36" +
+                        "\nName: null" +
+                        "\nEmployer: null" +
+                        "\nLocation: null" +
+                        "\nPosition Type: null" +
+                        "\nCore Competency: null" +
+                        "\n",
+                jobIdOnly.toString());
+    }
 }
 
 

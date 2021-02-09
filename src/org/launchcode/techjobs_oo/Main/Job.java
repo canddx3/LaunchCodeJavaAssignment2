@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Job {
 
 
-    private int id;
+    private Integer id;
     private static int nextId = 1;
 
     private String name;
@@ -22,6 +22,13 @@ public class Job {
         nextId++;
     }
 
+    public Job ( String name, Employer employer, PositionType positionType ) {
+        this();
+        this.name = name;
+        this.employer = employer;
+        this.positionType = positionType;
+    }
+
     public Job ( String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency ) {
         this();
         this.name = name;
@@ -36,16 +43,21 @@ public class Job {
 
     @Override
     public String toString () {
-        return "Job{" +
-                "\n" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", employer=" + employer +
-                ", location=" + location +
-                ", positionType=" + positionType +
-                ", coreCompetency=" + coreCompetency +
-                '}';
+//        String newName = name.isBlank() ? "Data Not Available" : name;
+//        String newEmp = employer.toString().isBlank() ? "Data Not Available" : employer.toString();
+//        String newLoc = location.toString().isBlank() ? "Data Not Available" : location.toString();
+//        String newPosT = positionType.toString().isBlank() ? "Data Not Available" : positionType.toString();
+//        String newCore = coreCompetency.toString().isBlank() ? "Data Not Available" : coreCompetency.toString();
+
+        return "\n" + "Id: " + id +
+                        "\n" + "Name: " + name +
+                        "\n" + "Employer: " + employer +
+                        "\n" + "Location: " + location +
+                        "\n" + "Position Type: " + positionType +
+                        "\n" + "Core Competency: " + coreCompetency +
+                        "\n";
     }
+
 
     @Override
     public boolean equals(Object o) {

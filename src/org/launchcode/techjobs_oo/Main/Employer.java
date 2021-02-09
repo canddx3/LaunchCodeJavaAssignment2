@@ -2,19 +2,10 @@ package org.launchcode.techjobs_oo.Main;
 
 import java.util.Objects;
 
-public class  Employer {
-    private int id;
-    private static int nextId = 1;
-    private String value;
-
-    public Employer() {
-        id = nextId;
-        nextId++;
-    }
+public class  Employer extends JobField {
 
     public Employer(String value) {
-        this();
-        this.value = value;
+        super(value);
     }
 
     // Custom toString, equals, and hashCode methods:
@@ -35,19 +26,5 @@ public class  Employer {
     @Override
     public int hashCode() {
         return Objects.hash(getId());
-    }
-
-    // Getters and Setters:
-
-    public int getId() {
-        return id;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 }
