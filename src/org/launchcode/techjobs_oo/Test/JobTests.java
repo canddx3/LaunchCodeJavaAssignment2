@@ -1,7 +1,9 @@
 package org.launchcode.techjobs_oo.Test;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.Main.*;
+
 import static org.junit.Assert.*;
 
 public class JobTests {
@@ -28,29 +30,14 @@ public class JobTests {
         assertEquals(10, 10, .001);
     }
 
-    @Test
-    public void testSettingJobId () {
-        assertTrue(jobEmptyCon.getId() < jobEmptyConst.getId());
-    }
-
-    @Test
-    public void testJCSAF () {
-        assertTrue(jobFullCon instanceof Job);
-    }
-
-    @Test
-    public void testJFE () {
-        assertFalse(jobEqual.equals(jobNotEqual));
-    }
-
-    @Test
+     @Test
     public void testBlankLine() {
         char beforeChar = jobEqual.toString().charAt(0);
         char afterChar = jobEqual.toString().charAt(jobEqual.toString().length() -1);
-        assertTrue(beforeChar == afterChar);
+        assertEquals(beforeChar, afterChar);
     }
 
-    @Test
+@Test
     public void stringLabel() {
         assertEquals("\nId: 10" +
                 "\nName: Product Tester" +
@@ -62,6 +49,27 @@ public class JobTests {
     }
 
     @Test
+    public void testJFE () {
+        assertNotEquals(jobEqual, jobNotEqual);
+    }
+
+    @Test
+    public void testJCSAF () {
+        assertNotNull(jobFullCon);
+    }
+
+@Test
+    public void onlyId() {
+        assertEquals("OPPS No Job",
+                jobIdOnly.toString());
+    }
+
+     @Test
+    public void testSettingJobId () {
+        assertTrue(jobEmptyCon.getId() < jobEmptyConst.getId());
+    }
+
+    @Test
     public void isEmpty() {
         assertEquals("\nId: 47" +
                         "\nName: Tester" +
@@ -70,13 +78,6 @@ public class JobTests {
                         "\nPosition Type: Data Not Available" +
                         "\nCore Competency: Assertive\n",
                 jobNotEqual.toString());
-    }
-
-
-    @Test
-    public void onlyId() {
-        assertEquals("OPPS",
-                jobIdOnly.toString());
     }
 }
 
